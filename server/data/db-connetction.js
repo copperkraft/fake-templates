@@ -16,8 +16,8 @@ databaseConnection
   });
 
 databaseConnection.sync({force: true})
-  .catch(err =>{
+  .catch(err => {
     console.error('Unable to sync the database:', err);
-});
+  });
 
 module.exports = databaseConnection;
