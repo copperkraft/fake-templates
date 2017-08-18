@@ -8,7 +8,7 @@ import {TagService} from '../services/tag/tag.service';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.less']
 })
 export class SearchComponent implements OnInit {
   posts: Post[];
