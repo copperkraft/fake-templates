@@ -1,11 +1,24 @@
 import { Injectable } from '@angular/core';
-import {Tag, tagsExamples} from '../../models/tag';
+import {Tag} from '../../classes/tag';
+import {Http} from '@angular/http';
 
 @Injectable()
 export class TagService {
-  constructor() { }
+  constructor(private http: Http) { }
 
   getTags(): Promise<Tag[]> {
-    return new Promise(resolve => resolve(tagsExamples));
+    return this.http.get(`/api/tags`)
+      .toPromise()
+      .then(response => {
+        return response.json() as Tag[];
+      });
+  }
+
+  addTag(name): Promise<Tag[]> {
+    return this.http.post(`/api/tags`, name)
+      .toPromise()
+      .then(response => {
+        return response.json() as Tag[];
+      });
   }
 }
