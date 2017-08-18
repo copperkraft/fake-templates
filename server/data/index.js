@@ -13,32 +13,51 @@ module.exports.tag = tag;
 setTimeout(() => [
   {
     title: 'Angular is perfect',
-    description: 'yes, it is'
+    description: 'yes, it is',
+    tags: [
+      {
+        name: 'angular'
+      }
+    ]
   },
   {
     title: 'StackBlitz ',
-    description: ' Online VS Code IDE for Angular & React'
+    description: ' Online VS Code IDE for Angular & React',
+    tags: [
+      {
+        name: 'react'
+      },
+      {
+        name: 'IDE'
+      }
+    ]
   },
   {
     title: 'How Angular Protects Us From XSS Attacks',
-    description: 'Angular, Cross-Site Scripting attack and the Sanitization process'
+    description: 'Angular, Cross-Site Scripting attack and the Sanitization process',
+    tags: [
+      {
+        name: 'security'
+      },
+      {
+        name: 'XSS'
+      }
+    ]
   },
   {
     title: 'NgModule',
-    description: 'Avoiding common confusions with modules in Angular'
+    description: 'Avoiding common confusions with modules in Angular',
+    tags: [
+      {
+        name: 'modules'
+      }
+    ]
   }
-].forEach(data => post.create(data)), 1000);
-setTimeout(() => [
-  {
-    name: 'Angular'
-  },
-  {
-    name: 'IDE '
-  },
-  {
-    name: 'Security'
-  },
-  {
-    name: 'Modules'
-  }
-].forEach(data => tag.create(data)), 1000);
+].forEach(data => {
+  return post.create(
+    data,
+    {
+      include: [tag]
+    });
+}), 2000);
+

@@ -7,8 +7,7 @@ module.exports = (sequelize, DataTypes) => {
 
   tag.associate = (post) => {
     tag.belongsToMany(post, {
-      through: 'TagPost',
-      as: 'Post'
+      through: 'TagPost'
     });
   };
 

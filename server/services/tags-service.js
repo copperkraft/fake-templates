@@ -1,10 +1,10 @@
 const database = require('../data');
 
 module.exports = {
-  get() {
+  getById() {
     return database.tag.findAll();
   },
   add(tag) {
-
+    return database.tag.create({name: tag});
   }
 };

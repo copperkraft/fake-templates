@@ -1,15 +1,35 @@
 const database = require('../data');
 
+const mapper = (post) => {
+  return {
+    id: post.id,
+    title: post.title,
+    description: post.description,
+    createdAt: post.createdAt,
+    tags: post.tags.map(tag => ({
+      id: tag.id,
+      name: tag.name
+    }))
+  };
+};
+
 module.exports = {
-  get(id) {
-    console.log(id);
-    return database.post.findById(id);
+  getById(id) {
+    return database.post.findOne({
+      where: {id},
+      include: [{
+        model: database.tag
+      }]
+    })
+      .then(data => mapper(data));
   },
-  search(tags, filters) {
-    if (!tags) {
-      return database.post.findAll();
-    }
-    return database.post.findAll();
+  search(tags) {
+    return database.post.findAll({
+      include: [{
+        model: database.tag
+      }]
+    })
+      .then(data => data.map(mapper));
   },
   add(data) {
     return database.post.create(data);
