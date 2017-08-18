@@ -10,6 +10,12 @@ const app = new Router();
 api(app);
 
 koa.use(app.routes());
+koa.use(async (ctx, next) => {
+  if (ctx.url.indexOf('js') === -1) { //
+    ctx.url = '/';
+  }
+  await next();
+});
 koa.use(serve('dist'));
 
 koa.listen(3001);
