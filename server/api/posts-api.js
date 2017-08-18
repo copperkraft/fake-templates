@@ -2,7 +2,7 @@ const posts = require('../services/posts-service');
 
 module.exports = (app, url) => {
   app.get(url, async ctx => {
-    ctx.body = JSON.stringify(await posts.search());
+    ctx.body = JSON.stringify(await posts.search(['angular', 'react']));
   });
 
   app.post(url, async ctx => {

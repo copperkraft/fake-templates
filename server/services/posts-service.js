@@ -26,7 +26,10 @@ module.exports = {
   search(tags) {
     return database.post.findAll({
       include: [{
-        model: database.tag
+        model: database.tag,
+        where: {
+          name: tags
+        }
       }]
     })
       .then(data => data.map(mapper));
