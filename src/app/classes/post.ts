@@ -7,5 +7,3 @@ export class Post {
   createdAt: Date;
   tags: Tag[];
 }
-
-
