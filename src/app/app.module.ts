@@ -2,14 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { EditorComponent } from './editor/editor.component';
-import { SearchComponent } from './search/search.component';
+import { EditorComponent } from './components/editor/editor.component';
+import { SearchComponent } from './components/search/search.component';
 import {RouterModule} from '@angular/router';
 import {PostService} from './services/post/post.service';
 import {TagService} from './services/tag/tag.service';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
-import { TagListComponent } from './tag-list/tag-list.component';
+import { TagListComponent } from './components/tag-list/tag-list.component';
 
 @NgModule({
   declarations: [

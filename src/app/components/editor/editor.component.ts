@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { PostData, PostService } from '../services/post/post.service';
+import { PostData, PostService } from '../../services/post/post.service';
 import { Location } from '@angular/common';
-import { Post } from '../classes/post';
+import { Post } from '../../classes/post';
 import 'rxjs/add/operator/switchMap';
-import {Tag} from '../classes/tag';
-import {TagService} from '../services/tag/tag.service';
+import {Tag} from '../../classes/tag';
+import {TagService} from '../../services/tag/tag.service';
 
 @Component({
   selector: 'app-editor',
