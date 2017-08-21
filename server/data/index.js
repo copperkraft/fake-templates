@@ -29,6 +29,12 @@ setTimeout(() => [
       },
       {
         name: 'IDE'
+      },
+      {
+        name: 'online'
+      },
+      {
+        name: 'code'
       }
     ]
   },
@@ -41,6 +47,9 @@ setTimeout(() => [
       },
       {
         name: 'XSS'
+      },
+      {
+        name: 'browser'
       }
     ]
   },
@@ -50,6 +59,9 @@ setTimeout(() => [
     tags: [
       {
         name: 'modules'
+      },
+      {
+        name: 'architecture'
       }
     ]
   }
