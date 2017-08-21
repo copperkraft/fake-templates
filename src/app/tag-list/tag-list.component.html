@@ -1,0 +1,10 @@
+<ul *ngFor="let tag of tags">
+  <li>
+    <p
+      [ngClass]="{selected: isSelected(tag)}"
+      (click)="toggleSelection(tag)"
+    >
+      {{tag.name}}
+    </p>
+  </li>
+</ul>

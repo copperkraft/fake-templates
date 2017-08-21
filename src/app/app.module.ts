@@ -8,14 +8,18 @@ import {RouterModule} from '@angular/router';
 import {PostService} from './services/post/post.service';
 import {TagService} from './services/tag/tag.service';
 import {HttpModule} from '@angular/http';
+import {FormsModule} from '@angular/forms';
+import { TagListComponent } from './tag-list/tag-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EditorComponent,
-    SearchComponent
+    SearchComponent,
+    TagListComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     RouterModule.forRoot([
       {
