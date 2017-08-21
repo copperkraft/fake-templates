@@ -1,7 +1,7 @@
 const database = require('../data');
 
 module.exports = {
-  getById() {
+  get() {
     return database.tag.findAll();
   },
   add(tag) {
