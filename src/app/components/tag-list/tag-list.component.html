@@ -1,7 +1,7 @@
-<ul *ngFor="let tag of tags">
-  <li>
-    <p
-      [ngClass]="{selected: isSelected(tag)}"
+<ul class="tag-list">
+  <li *ngFor="let tag of tags">
+    <p class="tag-list__item"
+      [ngClass]="{'tag-list__item--selected': isSelected(tag)}"
       (click)="toggleSelection(tag)"
     >
       {{tag.name}}

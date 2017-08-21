@@ -1,14 +1,26 @@
-<h1>Post:</h1>
-<div *ngIf="post">
-  <input [(ngModel)]="post.title">
-  <br>
-  <textarea [(ngModel)]="post.description"></textarea>
-  <ul *ngFor="let tag of post.tags">
-    <li>{{tag.name}}</li>
-  </ul>
-  <app-tag-list [(selected)]="post.tags"></app-tag-list>
-  <button *ngIf="isEdit" (click)="setPost()">Save</button>
-  <button *ngIf="!isEdit" (click)="addPost()">Create</button>
+<div *ngIf="post" class="container">
+  <div class="column">
+    <app-tag-list [(selected)]="post.tags"></app-tag-list>
+  </div>
+  <div class="column editor">
+    <div class="editor__title">
+      Title: <input class="editor__title-input" [(ngModel)]="post.title">
+    </div>
+
+    <div class="editor__description">
+      description:
+      <textarea class="editor__description-input" [(ngModel)]="post.description"></textarea>
+    </div>
+
+
+    <ul class="tag-list">
+      <li class="tag-list__item tag-list__item--selected" *ngFor="let tag of post.tags">{{tag.name}}</li>
+    </ul>
+
+    <button class="editor__submit" *ngIf="isEdit" (click)="setPost()">Save</button>
+    <button class="editor__submit" *ngIf="!isEdit" (click)="addPost()">Create</button>
+  </div>
 </div>
+
 
 
