@@ -12,7 +12,8 @@ import {TagService} from '../../services/tag/tag.service';
 })
 export class SearchComponent implements OnInit {
   posts: Post[];
-  tags: Tag[];
+  selectedTags: Tag[] = [];
+
   constructor(
     private postService: PostService,
     private tagService: TagService
@@ -21,9 +22,6 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.postService.getPosts().then(posts => {
       this.posts = posts;
-    });
-    this.tagService.getTags().then(tags => {
-      this.tags = tags;
     });
   }
 }
