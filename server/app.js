@@ -1,6 +1,7 @@
 const Koa = require('koa');
 const Router = require('koa-router');
 const serve = require('koa-static');
+const bodyParser = require('koa-body-parser');
 
 const api = require('./api');
 
@@ -9,6 +10,7 @@ const app = new Router();
 
 api(app);
 
+koa.use(bodyParser());
 koa.use(app.routes());
 koa.use(async (ctx, next) => {
   if (ctx.url.indexOf('js') === -1) { //

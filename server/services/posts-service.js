@@ -24,20 +24,47 @@ module.exports = {
       .then(data => mapper(data));
   },
   search(tags) {
-    return database.post.findAll({
-      include: [{
-        model: database.tag,
-        where: {
-          name: tags
-        }
-      }]
-    })
-      .then(data => data.map(mapper));
+    if (tags) {
+      return database.post.findAll({
+        include: [{
+          model: database.tag,
+          where: {
+            name: tags
+          }
+        }]
+      })
+        .then(data => data.map(mapper));
+    } else {
+      return database.post.findAll({
+        include: [{
+          model: database.tag
+        }]
+      })
+        .then(data => data.map(mapper));
+    }
   },
   add(data) {
-    return database.post.create(data);
+    return database.post.create(data)
+      .then(post => {
+        return database.tag.findAll(
+          {
+            where: {
+              id: data.tags.map(tag => tag.id)
+            }
+          })
+          .then(tags => post.setTags(tags));
+      });
   },
   set(postId, data) {
-
+    return database.post.findById(postId)
+      .then(post => post.update(data))
+      .then(post => database.tag.findAll(
+        {
+          where: {
+            id: data.tags.map(tag => tag.id)
+          }
+        })
+        .then(tags => post.setTags(tags))
+      );
   }
 };

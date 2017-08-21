@@ -2,6 +2,13 @@ import { Injectable } from '@angular/core';
 import {Post} from '../../classes/post';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import {Tag} from '../../classes/tag';
+
+export interface PostData {
+  title: string;
+  description: string;
+  tags: Tag[];
+}
 
 @Injectable()
 export class PostService {
@@ -19,6 +26,20 @@ export class PostService {
     id = id || 1;
     return this.http.get(`/api/posts/${id}`)
       .toPromise()
-      .then(response => response.json().data as Post);
+      .then(response => response.json() as Post);
+  }
+
+  addPost(post: PostData): Promise<Post> {
+    return this.http.post(`/api/posts`, JSON.stringify(post))
+      .toPromise()
+      .then(response => {
+        return response.json() as Post;
+      });
+  }
+
+  setPost(id: number, post: PostData): Promise<Post> {
+    return this.http.put(`/api/posts/${id}`, JSON.stringify(post))
+      .toPromise()
+      .then(response => response.json() as Post);
   }
 }

@@ -1,3 +1,14 @@
-<p class="red">
-  editor works with {{postId}}
-</p>
+<h1>Post:</h1>
+<div *ngIf="post">
+  <input [(ngModel)]="post.title">
+  <br>
+  <textarea [(ngModel)]="post.description"></textarea>
+  <ul *ngFor="let tag of post.tags">
+    <li>{{tag.name}}</li>
+  </ul>
+  <app-tag-list [(selected)]="post.tags"></app-tag-list>
+  <button *ngIf="isEdit" (click)="setPost()">Save</button>
+  <button *ngIf="!isEdit" (click)="addPost()">Create</button>
+</div>
+
+
