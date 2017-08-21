@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "server": "node server/app"
+    "server": "node server/app",
+    "watcher": "ng build -op dist -w"
   },
   "private": true,
   "dependencies": {
