@@ -6,10 +6,10 @@ const mapper = (post) => {
     title: post.title,
     description: post.description,
     createdAt: post.createdAt,
-    tags: post.tags.map(tag => ({
+    tags: post.tags ? post.tags.map(tag => ({
       id: tag.id,
       name: tag.name
-    }))
+    })) : []
   };
 };
 
@@ -52,7 +52,12 @@ module.exports = {
               id: data.tags.map(tag => tag.id)
             }
           })
-          .then(tags => post.setTags(tags));
+          .then(tags => {
+            post.setTags(tags);
+          })
+          .then(() => {
+            return mapper(post);
+          });
       });
   },
   set(postId, data) {
@@ -65,6 +70,9 @@ module.exports = {
           }
         })
         .then(tags => post.setTags(tags))
+        .then(() => {
+          return mapper(post);
+        })
       );
   }
 };

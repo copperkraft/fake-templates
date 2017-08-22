@@ -40,6 +40,7 @@ export class PostService {
     return this.http.post(`/api/posts`, JSON.stringify(post))
       .toPromise()
       .then(response => {
+        console.log(response.json());
         return response.json() as Post;
       });
   }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import { PostData, PostService } from '../../services/post/post.service';
-import { Location } from '@angular/common';
 import { Post } from '../../classes/post';
 import 'rxjs/add/operator/switchMap';
 import {Tag} from '../../classes/tag';
@@ -21,11 +20,15 @@ export class EditorComponent implements OnInit {
   constructor(
     private postService: PostService,
     private tagService: TagService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   addPost() {
-    this.postService.addPost(this.post);
+    console.log(this.post);
+    this.postService.addPost(this.post).then(post =>
+      this.router.navigate(['/edit/' + post.id])
+    );
   }
 
   addTag(name: string) {
