@@ -4,9 +4,16 @@
       <input
         #newTagNameInput
         class="add-tag__input"
+        (keyup)="0"
         (keyup.enter)="addTag(newTagNameInput.value)"
       >
-      <button class="add-tag__button" (click)="addTag(newTagNameInput.value)">+</button>
+      <button
+        class="add-tag__button"
+        (click)="addTag(newTagNameInput.value)"
+        [disabled]="!newTagNameInput.value.length"
+      >
+        +
+      </button>
     </div>
     <app-tag-list [tags]="tags" [(selected)]="post.tags"></app-tag-list>
   </div>

@@ -32,8 +32,10 @@ export class EditorComponent implements OnInit {
   }
 
   addTag(name: string) {
-    this.tagService.addTag(name)
-      .then(this.loadTags.bind(this));
+    if (name) {
+      this.tagService.addTag(name)
+        .then(this.loadTags.bind(this));
+    }
   }
 
   setPost() {
