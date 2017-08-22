@@ -21,3 +21,5 @@ koa.use(async (ctx, next) => {
 koa.use(serve('dist'));
 
 koa.listen(3001);
+
+require('./default-info');
