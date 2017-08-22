@@ -1,6 +1,14 @@
 <div *ngIf="post" class="container container--reverse">
   <div class="column">
-    <app-tag-list [(selected)]="post.tags"></app-tag-list>
+    <div class="add-tag">
+      <input
+        #newTagNameInput
+        class="add-tag__input"
+        (keyup.enter)="addTag(newTagNameInput.value)"
+      >
+      <button class="add-tag__button" (click)="addTag(newTagNameInput.value)">+</button>
+    </div>
+    <app-tag-list [tags]="tags" [(selected)]="post.tags"></app-tag-list>
   </div>
   <div class="column editor">
     <div class="editor__title">
@@ -12,10 +20,7 @@
       <textarea class="editor__description-input" [(ngModel)]="post.description"></textarea>
     </div>
 
-
-    <ul class="tag-list">
-      <li class="tag-list__item tag-list__item--selected" *ngFor="let tag of post.tags">{{tag.name}}</li>
-    </ul>
+    <app-tag-list [tags]="post.tags" [(selected)]="post.tags"></app-tag-list>
 
     <button class="editor__submit" *ngIf="isEdit" (click)="setPost()">Save</button>
     <button class="editor__submit" *ngIf="!isEdit" (click)="addPost()">Create</button>

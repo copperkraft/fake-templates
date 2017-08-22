@@ -9,13 +9,11 @@ import {templateJitUrl} from '@angular/compiler';
   styleUrls: ['./tag-list.component.less']
 })
 export class TagListComponent implements OnInit {
-  tags: Tag[];
+  @Input() tags: Tag[];
   @Input() selected: Tag[];
   @Output() selectedChange = new EventEmitter<Tag[]>();
 
-  constructor(
-    private tagService: TagService
-  ) { }
+  constructor() { }
 
   isSelected(tag: Tag) {
     return this.selected.some((item: Tag) => tag.id === item.id);
@@ -30,9 +28,5 @@ export class TagListComponent implements OnInit {
     this.selectedChange.emit(this.selected);
   }
 
-  ngOnInit() {
-    this.tagService.getTags().then(tags => {
-      this.tags = tags;
-    });
-  }
+  ngOnInit() { }
 }

@@ -11,8 +11,15 @@ import {TagService} from '../../services/tag/tag.service';
   styleUrls: ['./search.component.less']
 })
 export class SearchComponent implements OnInit {
+  tags: Tag[];
   posts: Post[];
   selectedTags: Tag[] = [];
+
+  loadTags() {
+    this.tagService.getTags().then(tags => {
+      this.tags = tags;
+    });
+  }
 
   constructor(
     private postService: PostService,
@@ -20,6 +27,7 @@ export class SearchComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.loadTags();
     this.postService.getPosts().then(posts => {
       this.posts = posts;
     });

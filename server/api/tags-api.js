@@ -6,7 +6,7 @@ module.exports = (app, url) => {
   });
   app.post(url, async ctx => {
     ctx.body = JSON.stringify(
-      await tags.add(JSON.parse(body))
+      await tags.add(ctx.request.body)
     );
   });
 };

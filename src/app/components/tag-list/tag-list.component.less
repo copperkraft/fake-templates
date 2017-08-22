@@ -1,0 +1,22 @@
+.tag-list {
+  font-size: 20px;
+  background-color: #eeeeee;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 0.25em;
+
+  .tag-list__item {
+    padding: 0.5em;
+    margin: 0.25em;
+    background-color: #ffffff;
+    color: #000000;
+    cursor: pointer;
+    transition: 200ms;
+
+    &.tag-list__item--selected {
+      background-color: #222222;
+      color: #ffffff;
+    }
+  }
+}

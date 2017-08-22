@@ -16,23 +16,35 @@ export class EditorComponent implements OnInit {
   isEdit = false;
   private postId: number;
   post: PostData;
+  tags: Tag[];
 
   constructor(
     private postService: PostService,
     private tagService: TagService,
-    private route: ActivatedRoute,
-    private location: Location
+    private route: ActivatedRoute
   ) {}
 
   addPost() {
     this.postService.addPost(this.post);
   }
 
+  addTag(name: string) {
+    this.tagService.addTag(name)
+      .then(this.loadTags.bind(this));
+  }
+
   setPost() {
     this.postService.setPost(this.postId, this.post);
   }
 
+  loadTags() {
+    this.tagService.getTags().then(tags => {
+      this.tags = tags;
+    });
+  }
+
   ngOnInit() {
+    this.loadTags();
     this.route.paramMap
       .switchMap((params: ParamMap) => {
         this.postId = +params.get('id');
