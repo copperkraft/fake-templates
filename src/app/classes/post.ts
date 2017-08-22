@@ -5,5 +5,5 @@ export class Post {
   title: string;
   description: string;
   createdAt: Date;
-  tags: Tag[];
+  tags: Tag[] = [];
 }

@@ -44,7 +44,7 @@ export class EditorComponent implements OnInit {
   }
 
   isValidPost() {
-    return this.post.tags.length && this.post.description && this.post.title
+    return this.post.tags.length && this.post.description && this.post.title;
   }
 
   ngOnInit() {
@@ -56,11 +56,7 @@ export class EditorComponent implements OnInit {
           this.isEdit = true;
           return this.postService.getPostById(this.postId);
         }
-        return Promise.resolve({
-          title: '',
-          description: '',
-          tags: []
-        });
+        return Promise.resolve(new Post());
       })
       .subscribe(post => {
         this.post = post;
