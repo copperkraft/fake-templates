@@ -21,6 +21,17 @@ export class SearchComponent implements OnInit {
     });
   }
 
+  loadPosts() {
+    this.postService.getPosts(this.selectedTags).then(posts => {
+      this.posts = posts;
+    });
+  }
+
+  selectedTagsChange(tags: Tag[]) {
+    this.selectedTags = tags;
+    this.loadPosts();
+  }
+
   constructor(
     private postService: PostService,
     private tagService: TagService
@@ -28,8 +39,6 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.loadTags();
-    this.postService.getPosts(this.selectedTags).then(posts => {
-      this.posts = posts;
-    });
+    this.loadPosts();
   }
 }

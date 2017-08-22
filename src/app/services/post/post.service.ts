@@ -15,6 +15,13 @@ export class PostService {
   constructor(private http: Http) { }
 
   getPosts(tags: Tag[]): Promise<Post[]> {
+    if (tags.length) {
+      return this.http.get(`/api/posts?${tags.map(tag => 'tag=' + tag.id).join('&')}`)
+        .toPromise()
+        .then(response => {
+          return response.json() as Post[];
+        });
+    }
     return this.http.get(`/api/posts`)
       .toPromise()
       .then(response => {

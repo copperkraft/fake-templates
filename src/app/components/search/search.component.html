@@ -1,6 +1,6 @@
 <div class="container">
   <div class="sidebar">
-    <app-tag-list [tags]="tags" [(selected)]="selectedTags"></app-tag-list>
+    <app-tag-list [tags]="tags" [selected]="selectedTags" (selectedChange)="selectedTagsChange($event)"></app-tag-list>
   </div>
   <div class="column">
     <ul *ngFor="let post of posts">
@@ -10,7 +10,7 @@
           <a class="header__link" [routerLink]="'/edit/' + post.id">edit</a>
         </h3>
         <p class="post__description">{{post.description}}</p>
-        <app-tag-list [tags]="post.tags" [(selected)]="selectedTags"></app-tag-list>
+        <app-tag-list [tags]="post.tags" [selected]="selectedTags" (selectedChange)="selectedTagsChange($event)"></app-tag-list>
       </li>
     </ul>
   </div>
