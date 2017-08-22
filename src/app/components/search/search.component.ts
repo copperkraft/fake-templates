@@ -28,7 +28,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.loadTags();
-    this.postService.getPosts().then(posts => {
+    this.postService.getPosts(this.selectedTags).then(posts => {
       this.posts = posts;
     });
   }

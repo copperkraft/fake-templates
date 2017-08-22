@@ -22,8 +22,8 @@
 
     <app-tag-list [tags]="post.tags" [(selected)]="post.tags"></app-tag-list>
 
-    <button class="editor__submit" *ngIf="isEdit" (click)="setPost()">Save</button>
-    <button class="editor__submit" *ngIf="!isEdit" (click)="addPost()">Create</button>
+    <button class="editor__submit" [disabled]="!isValidPost()" *ngIf="isEdit" (click)="setPost()">Save</button>
+    <button class="editor__submit" [disabled]="!isValidPost()" *ngIf="!isEdit" (click)="addPost()">Create</button>
   </div>
 </div>
 

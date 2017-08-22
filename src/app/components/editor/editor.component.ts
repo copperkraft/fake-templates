@@ -43,6 +43,10 @@ export class EditorComponent implements OnInit {
     });
   }
 
+  isValidPost() {
+    return this.post.tags.length && this.post.description && this.post.title
+  }
+
   ngOnInit() {
     this.loadTags();
     this.route.paramMap

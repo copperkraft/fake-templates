@@ -14,7 +14,7 @@ export interface PostData {
 export class PostService {
   constructor(private http: Http) { }
 
-  getPosts(): Promise<Post[]> {
+  getPosts(tags: Tag[]): Promise<Post[]> {
     return this.http.get(`/api/posts`)
       .toPromise()
       .then(response => {

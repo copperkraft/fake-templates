@@ -1,10 +1,12 @@
 <ul class="tag-list">
-  <li *ngFor="let tag of tags">
-    <p class="tag-list__item"
+  <li *ngFor="let tag of tags"
+      class="tag-list__item"
       [ngClass]="{'tag-list__item--selected': isSelected(tag)}"
       (click)="toggleSelection(tag)"
-    >
-      {{tag.name}}
-    </p>
+  >
+    {{tag.name}}
+  </li>
+  <li *ngIf="!tags.length" class="tag-list__item">
+    please, select tags from list
   </li>
 </ul>
