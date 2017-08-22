@@ -44,7 +44,6 @@ module.exports = {
     }
   },
   add(data) {
-    console.log(JSON.stringify(data));
     return database.post.create(data)
       .then(post => {
         return database.tag.findAll(
