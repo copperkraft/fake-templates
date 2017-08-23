@@ -1,7 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {TagService} from '../../services/tag/tag.service';
 import {Tag} from '../../classes/tag';
-import {templateJitUrl} from '@angular/compiler';
 
 @Component({
   selector: 'app-tag-list',

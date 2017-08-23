@@ -1,20 +1,6 @@
 <div *ngIf="post" class="container container--reverse">
   <div class="column">
-    <div class="add-tag">
-      <input
-        #newTagNameInput
-        class="add-tag__input"
-        (keyup)="0"
-        (keyup.enter)="addTag(newTagNameInput.value)"
-      >
-      <button
-        class="add-tag__button"
-        (click)="addTag(newTagNameInput.value)"
-        [disabled]="!newTagNameInput.value.length"
-      >
-        +
-      </button>
-    </div>
+    <app-add-tag [(tags)]="tags"></app-add-tag>
     <app-tag-list [tags]="tags" [(selected)]="post.tags"></app-tag-list>
   </div>
   <div class="column editor">

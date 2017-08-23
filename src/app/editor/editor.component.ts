@@ -3,8 +3,8 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { PostData, PostService } from '../services/post/post.service';
 import { Post } from '../classes/post';
 import 'rxjs/add/operator/switchMap';
-import {Tag} from '../classes/tag';
-import {TagService} from '../services/tag/tag.service';
+import { Tag } from '../classes/tag';
+import { TagService } from '../services/tag/tag.service';
 
 @Component({
   selector: 'app-editor',
@@ -26,15 +26,8 @@ export class EditorComponent implements OnInit {
 
   addPost() {
     this.postService.addPost(this.post).then(post =>
-      this.router.navigate(['/edit/' + post.id])
+      this.router.navigate(['/editor/' + post.id])
     );
-  }
-
-  addTag(name: string) {
-    if (name) {
-      this.tagService.addTag(name)
-        .then(this.loadTags.bind(this));
-    }
   }
 
   setPost() {
