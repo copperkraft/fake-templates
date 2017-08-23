@@ -25,7 +25,6 @@ export class EditorComponent implements OnInit {
   ) {}
 
   addPost() {
-    console.log(this.post);
     this.postService.addPost(this.post).then(post =>
       this.router.navigate(['/edit/' + post.id])
     );
@@ -56,7 +55,6 @@ export class EditorComponent implements OnInit {
     this.loadTags();
     this.route.paramMap
       .switchMap((params: ParamMap) => {
-        console.log(params.keys);
         this.postId = +params.get('id');
         if (this.postId) {
           this.isEdit = true;
