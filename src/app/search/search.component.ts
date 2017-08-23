@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/switchMap';
-import {PostService} from '../../services/post/post.service';
-import {Post} from '../../classes/post';
-import {Tag} from '../../classes/tag';
-import {TagService} from '../../services/tag/tag.service';
+import {PostService} from '../services/post/post.service';
+import {Post} from '../classes/post';
+import {Tag} from '../classes/tag';
+import {TagService} from '../services/tag/tag.service';
 
 @Component({
   selector: 'app-search',

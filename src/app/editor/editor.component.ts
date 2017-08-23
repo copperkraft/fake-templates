@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import { PostData, PostService } from '../../services/post/post.service';
-import { Post } from '../../classes/post';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { PostData, PostService } from '../services/post/post.service';
+import { Post } from '../classes/post';
 import 'rxjs/add/operator/switchMap';
-import {Tag} from '../../classes/tag';
-import {TagService} from '../../services/tag/tag.service';
+import {Tag} from '../classes/tag';
+import {TagService} from '../services/tag/tag.service';
 
 @Component({
   selector: 'app-editor',
@@ -56,6 +56,7 @@ export class EditorComponent implements OnInit {
     this.loadTags();
     this.route.paramMap
       .switchMap((params: ParamMap) => {
+        console.log(params.keys);
         this.postId = +params.get('id');
         if (this.postId) {
           this.isEdit = true;

@@ -7,7 +7,7 @@
       <li class="post">
         <h3 class="post__title">
           {{post.title}}
-          <a class="header__link" [routerLink]="'/edit/' + post.id">edit</a>
+          <a class="header__link" [routerLink]="'/editor/' + post.id">edit</a>
         </h3>
         <p class="post__description">{{post.description}}</p>
         <app-tag-list [tags]="post.tags" [selected]="selectedTags" (selectedChange)="selectedTagsChange($event)"></app-tag-list>
