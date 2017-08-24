@@ -14,6 +14,8 @@ export class SearchComponent implements OnInit {
   tags: Tag[];
   posts: Post[];
   selectedTags: Tag[] = [];
+  page: number;
+  pageSize: number;
 
   loadTags() {
     this.tagService.getTags().then(tags => {
@@ -22,8 +24,14 @@ export class SearchComponent implements OnInit {
   }
 
   loadPosts() {
-    this.postService.getPosts(this.selectedTags).then(posts => {
-      this.posts = posts;
+    this.postService.getPosts(
+      this.selectedTags,
+      {
+        page: 0,
+        pageSize: 5
+      })
+      .then(data => {
+      this.posts = data.posts;
     });
   }
 

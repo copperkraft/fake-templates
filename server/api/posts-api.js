@@ -2,9 +2,9 @@ const posts = require('../services/posts-service');
 
 module.exports = (app, url) => {
   app.get(url, async ctx => {
-    const {tag: tags, page, offset, pageSize, minDate, maxDate} = ctx.request.query;
+    const {tag: tags, page, pageSize, minDate, maxDate} = ctx.request.query;
     ctx.body = JSON.stringify(
-      await posts.search(tags, {page, offset, pageSize}, {minDate, maxDate}));
+      await posts.search(tags, {page, pageSize}, {minDate, maxDate}));
   });
 
   app.post(url, async ctx => {

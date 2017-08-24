@@ -1,3 +1,4 @@
+///<reference path="../../../../node_modules/rxjs/add/operator/toPromise.d.ts"/>
 import { Injectable } from '@angular/core';
 import {Post} from '../../classes/post';
 import {Http} from '@angular/http';
@@ -14,18 +15,29 @@ export interface PostData {
 export class PostService {
   constructor(private http: Http) { }
 
-  getPosts(tags: Tag[]): Promise<Post[]> {
-    if (tags.length) {
-      return this.http.get(`/api/posts?${tags.map(tag => 'tag=' + tag.id).join('&')}`)
-        .toPromise()
-        .then(response => {
-          return response.json() as Post[];
-        });
+  getPosts(
+    tags: Tag[],
+    pagination: {
+      page: number,
+      pageSize?: number
+    },
+    filters?: {
+      minDate?: Date,
+      maxDate?: Date
     }
-    return this.http.get(`/api/posts`)
+  ): Promise<{pageCount: number, posts: Post[]}> {
+    const url = `/api/posts?page=${pagination.page}` +  // todo: separate url constructing to utility function
+      (pagination.pageSize ? `&pageSize=${pagination.pageSize}` : '') +
+      tags.map(tag => '&tag=' + tag.id).join();
+    console.log(url);
+    return this.http.get(url)
       .toPromise()
       .then(response => {
-        return response.json() as Post[];
+        const {data, pageCount} = response.json();
+        return {
+          pageCount: pageCount,
+          posts: data as Post[]
+        };
       });
   }
 
