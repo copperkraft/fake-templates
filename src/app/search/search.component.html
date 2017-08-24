@@ -3,6 +3,7 @@
     <app-tag-list [tags]="tags" [selected]="selectedTags" (selectedChange)="selectedTagsChange($event)"></app-tag-list>
   </div>
   <div class="column">
+    <app-paginator [pageCount]="pageCount" [page]="page" (pageChange)="pageChange($event)"></app-paginator>
     <ul *ngFor="let post of posts">
       <li class="post">
         <h3 class="post__title">

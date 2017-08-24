@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { SearchComponent } from './search.component';
 import { SearchRoutingModule } from './search-routing.module';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 @NgModule({
   imports: [
@@ -9,7 +10,8 @@ import { SearchRoutingModule } from './search-routing.module';
     SearchRoutingModule
   ],
   declarations: [
-    SearchComponent
+    SearchComponent,
+    PaginatorComponent
   ]
 })
 export class SearchModule { }

@@ -28,8 +28,7 @@ export class PostService {
   ): Promise<{pageCount: number, posts: Post[]}> {
     const url = `/api/posts?page=${pagination.page}` +  // todo: separate url constructing to utility function
       (pagination.pageSize ? `&pageSize=${pagination.pageSize}` : '') +
-      tags.map(tag => '&tag=' + tag.id).join();
-    console.log(url);
+      tags.map(tag => '&tag=' + tag.id).join('');
     return this.http.get(url)
       .toPromise()
       .then(response => {

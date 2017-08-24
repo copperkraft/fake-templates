@@ -1,0 +1,10 @@
+<div class="paginator" *ngIf="pages.length > 1">
+  <button
+    *ngFor="let i of pages"
+    class="paginator__page"
+    (click)="select(i)"
+    [disabled]="i === page"
+  >
+    {{i + 1}}
+  </button>
+</div>
