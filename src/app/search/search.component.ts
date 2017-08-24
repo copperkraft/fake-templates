@@ -39,6 +39,7 @@ export class SearchComponent implements OnInit {
 
   selectedTagsChange(tags: Tag[]) {
     this.selectedTags = tags;
+    this.page = 0;
     this.loadPosts();
   }
 
