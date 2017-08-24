@@ -1,17 +1,8 @@
-const database = require('../data');
+const postMapper = require('./utils/post-mapper');
+const postFilterCreator = require('./utils/post-filter-creator');
+const paginator = require('./utils/paginator');
 
-const mapper = (post) => {
-  return {
-    id: post.id,
-    title: post.title,
-    description: post.description,
-    createdAt: post.createdAt,
-    tags: post.tags ? post.tags.map(tag => ({
-      id: tag.id,
-      name: tag.name
-    })) : []
-  };
-};
+const database = require('../data');
 
 module.exports = {
   getById(id) {
@@ -21,27 +12,18 @@ module.exports = {
         model: database.tag
       }]
     })
-      .then(data => mapper(data));
+      .then(data => postMapper(data));
   },
-  search(tags) {
-    if (tags) {
-      return database.post.findAll({
-        include: [{
-          model: database.tag,
-          where: {
-            id: tags
-          }
-        }]
-      })
-        .then(data => data.map(mapper));
-    } else {
-      return database.post.findAll({
-        include: [{
-          model: database.tag
-        }]
-      })
-        .then(data => data.map(mapper));
-    }
+  search(tags, pagination, filters) {
+    return database.post.findAll({
+      include: [{
+        model: database.tag,
+        where: tags ? {id: tags} : null
+      }]
+    })
+      .then(data => data.map(postMapper))
+      .then(data => filters ? data.filter(postFilterCreator(filters)) : data)
+      .then(paginator(pagination));
   },
   add(data) {
     return database.post.create(data)
@@ -56,7 +38,7 @@ module.exports = {
             post.setTags(tags);
           })
           .then(() => {
-            return mapper(post);
+            return postMapper(post);
           });
       });
   },
@@ -71,7 +53,7 @@ module.exports = {
         })
         .then(tags => post.setTags(tags))
         .then(() => {
-          return mapper(post);
+          return postMapper(post);
         })
       );
   }
