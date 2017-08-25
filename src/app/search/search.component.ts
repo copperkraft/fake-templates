@@ -18,6 +18,7 @@ export class SearchComponent implements OnInit {
   pageCount = 0;
   pageSize = 2;
   minDate: Date;
+  maxDate: Date;
 
   loadTags() {
     this.tagService.getTags().then(tags => {
@@ -33,7 +34,8 @@ export class SearchComponent implements OnInit {
         pageSize: this.pageSize
       },
       {
-        minDate: this.minDate
+        minDate: this.minDate,
+        maxDate: this.maxDate
       })
       .then(data => {
       this.posts = data.posts;
@@ -49,6 +51,12 @@ export class SearchComponent implements OnInit {
 
   minDateChange(date: Date) {
     this.minDate = date;
+    this.page = 0;
+    this.loadPosts();
+  }
+
+  maxDateChange(date: Date) {
+    this.maxDate = date;
     this.page = 0;
     this.loadPosts();
   }
