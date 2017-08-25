@@ -7,14 +7,14 @@ import { SharedModule } from './shared/shared.module';
 
 import { PostService } from './services/post/post.service';
 import { TagService } from './services/tag/tag.service';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     BrowserModule,
     SharedModule,
-    HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     PostService,
