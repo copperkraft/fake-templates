@@ -1,5 +1,6 @@
 <div class="container">
   <div class="sidebar">
+    Min date: <my-date-picker [ngModel]="minDate" (ngModelChange)="minDate = $event ? $event.jsdate : null"></my-date-picker>
     <app-tag-list [tags]="tags" [selected]="selectedTags" (selectedChange)="selectedTagsChange($event)"></app-tag-list>
   </div>
   <div class="column">
