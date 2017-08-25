@@ -1,5 +1,6 @@
 module.exports = function postFilterCreator(filters) {
-
-  return post => (!filters.minDate || post.createdAt > filters.minDate) &&
-    (!filters.maxDate || post.createdAt < filters.maxDate);
+  const minDate = filters.minDate && new Date(filters.minDate);
+  const maxDate = filters.maxDate && new Date(filters.maxDate);
+  return post => (!minDate || post.createdAt > minDate) &&
+    (!maxDate || post.createdAt < maxDate);
 };
