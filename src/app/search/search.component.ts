@@ -31,6 +31,9 @@ export class SearchComponent implements OnInit {
       {
         page: this.page,
         pageSize: this.pageSize
+      },
+      {
+        minDate: this.minDate
       })
       .then(data => {
       this.posts = data.posts;
