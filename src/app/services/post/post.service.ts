@@ -55,7 +55,6 @@ export class PostService {
         value: tag.id
       }))
     ]);
-    console.log(url);
 
     return this.http.get(url)
       .toPromise()

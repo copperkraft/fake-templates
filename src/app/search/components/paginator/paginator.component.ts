@@ -16,7 +16,6 @@ export class PaginatorComponent implements OnInit {
   @Output() pageChange = new EventEmitter<number>();
 
   select(page) {
-    console.log(page, this.page);
     this.pageChange.emit(page);
   }
 
