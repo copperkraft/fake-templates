@@ -11,7 +11,7 @@ export class TagService {
       .toPromise();
   }
 
-  addTag(name): Promise<Tag[]> {
+  addTag(name: string): Promise<Tag[]> {
     return this.http.post<Tag[]>(`/api/tags`, name)
       .toPromise();
   }
