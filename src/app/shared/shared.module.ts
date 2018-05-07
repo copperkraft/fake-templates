@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TagListComponent } from './tag-list/tag-list.component';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 /* The SharedModule may re-export other widget modules, such as CommonModule,
 FormsModule, and modules with the UI controls that you use most widely.*/
@@ -11,12 +12,14 @@ FormsModule, and modules with the UI controls that you use most widely.*/
     CommonModule
   ],
   declarations: [
-    TagListComponent
+    HeaderComponent,
+    FooterComponent
   ],
   exports: [
     CommonModule,
     FormsModule,
-    TagListComponent
+    HeaderComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }

@@ -4,16 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'search',
+    redirectTo: 'timejournal',
     pathMatch: 'full'
   },
   {
-    path: 'search',
-    loadChildren: 'app/search/search.module#SearchModule'
-  },
-  {
-    path: 'editor',
-    loadChildren: 'app/editor/editor.module#EditorModule'
+    path: 'timejournal',
+    loadChildren: 'app/timejournal/timejournal.module#TimejournalModule'
   }
 ];
 

@@ -5,8 +5,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 
-import { PostService } from './services/post/post.service';
-import { TagService } from './services/tag/tag.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -15,10 +13,6 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule,
     AppRoutingModule,
     HttpClientModule
-  ],
-  providers: [
-    PostService,
-    TagService
   ],
   declarations: [
     AppComponent
