@@ -4,6 +4,7 @@ import { TimejournalComponent } from './timejournal.component';
 import {TimejournalRoutingModule} from './timejournal-routing.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ReportFormComponent } from './report-form/report-form.component';
+import { TableComponent } from './table/table.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { ReportFormComponent } from './report-form/report-form.component';
   declarations: [
     TimejournalComponent,
     SidebarComponent,
-    ReportFormComponent
+    ReportFormComponent,
+    TableComponent
   ]
 })
 export class TimejournalModule { }

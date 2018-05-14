@@ -1,0 +1,41 @@
+.table {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  min-height: 100px;
+
+  border: 2px solid #eeeeee;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.5);
+  font-size: 18px;
+
+  .table__head {
+    background: #eeeeee;
+    font-weight: bold;
+  }
+
+  .table__head-item {
+    padding: 0.5em 1em;
+
+    color: black;
+  }
+
+  .table__sort-icon {
+    font-size: 16px;
+    color: #bbbbbb;
+
+    &.table__sort-icon--active {
+      color: black;
+    }
+  }
+
+  .table__row {
+    &:nth-child(2n) {
+      background: #f0f0f0;
+    }
+  }
+
+  .table__item {
+    padding: 0.5em 1em;
+  }
+}
